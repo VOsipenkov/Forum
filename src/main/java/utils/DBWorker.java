@@ -1,11 +1,13 @@
 package utils;
 
 import model.User;
+
+import java.sql.Connection;
 import java.sql.Statement;
 import java.util.List;
 
 public interface DBWorker {
-    public Statement getConnection();
+    public Connection getConnection();
 
     public void closeSession();
 
