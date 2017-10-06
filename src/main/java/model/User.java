@@ -37,8 +37,12 @@ public class User {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole(int role) {
+        if (role == 1){
+            this.role = "admin";
+        }else {
+            this.role = "user";
+        }
     }
 
     public Date getBanToDate() {
@@ -51,6 +55,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "id: " + userId + " userLogin: " + userLogin + " email: " + email;
+        return "id: " + userId + " login: " + userLogin + " email: " + email;
     }
 }

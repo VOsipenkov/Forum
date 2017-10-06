@@ -7,8 +7,23 @@
         <servlet-name>testConnection</servlet-name>
         <servlet-class>controller.TestConnection</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>testConnection</servlet-name>
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>listeners.DbConnectionListener</listener-class>
+    </listener>
+
+    <context-param>
+        <param-name>db_username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_password</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    
 </web-app>
