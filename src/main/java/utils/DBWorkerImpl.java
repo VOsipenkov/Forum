@@ -1,9 +1,12 @@
 package utils;
 
 import model.User;
+
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
+
+import static utils.Constants.GET_USER_BY_LOGIN;
 
 public class DBWorkerImpl implements DBWorker {
     private String url;
@@ -82,5 +85,49 @@ public class DBWorkerImpl implements DBWorker {
         }
 
         return users;
+    }
+
+    public User getUserByLogin(String login) {
+        User user = null;
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_USER_BY_LOGIN);
+            preparedStatement.setString(1, login);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            user.setUserId(resultSet.getInt("user_id"));
+            user.setUserLogin(resultSet.getString("user_login"));
+            user.setEmail(resultSet.getString("email"));
+            user.setBanToDate(resultSet.getDate("ban_to"));
+            user.setRole(resultSet.getInt("role_id"));
+            user.setPassword(resultSet.getString("password"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public User banUserByLogin(String login){
+        User user = null;
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.BAN_USER_BY_LOGIN);
+            preparedStatement.setString(1, login);
+
+            if (preparedStatement.executeUpdate() != 1){
+                System.err.println("Not found user with login " + login + " for ban");
+                return null;
+            }
+
+            user = getUserByLogin(login);
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return user;
     }
 }

@@ -14,4 +14,8 @@ public interface DBWorker {
     public void addUser(User user);
 
     public List<User> getAllUsers();
+
+    public User getUserByLogin(String login);
+
+    public User banUserByLogin(String login);
 }
