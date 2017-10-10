@@ -10,8 +10,16 @@ import java.io.IOException;
 
 public class Register extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
-       dbWorker.addUser(new User());
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
+
+        User user = new User();
+        user.setPassword(req.getParameter("Password"));
+        user.setUserLogin(req.getParameter("Login"));
+        user.setRole(2);
+        user.setBanToDate(null);
+        user.setEmail(req.getParameter("Email"));
+
+        dbWorker.addUser(user);
     }
 }

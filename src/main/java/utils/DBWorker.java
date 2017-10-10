@@ -18,4 +18,6 @@ public interface DBWorker {
     public User getUserByLogin(String login);
 
     public User banUserByLogin(String login);
+
+    public User userLogin(String login, String password);
 }

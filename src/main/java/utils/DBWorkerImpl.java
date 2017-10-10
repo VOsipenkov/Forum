@@ -52,10 +52,11 @@ public class DBWorkerImpl implements DBWorker {
     public void addUser(User user) {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.ADD_USER);
-            preparedStatement.setString(1, "login555");
-            preparedStatement.setString(2, "email555");
-            preparedStatement.setDate(3, null);
-            preparedStatement.setInt(4, 1);
+            preparedStatement.setString(1, user.getUserLogin());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setDate(4, null);
+            preparedStatement.setInt(5, 1);
 
             preparedStatement.execute();
 
@@ -110,21 +111,47 @@ public class DBWorkerImpl implements DBWorker {
         return user;
     }
 
-    public User banUserByLogin(String login){
+    public User banUserByLogin(String login) {
         User user = null;
 
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.BAN_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
 
-            if (preparedStatement.executeUpdate() != 1){
+            if (preparedStatement.executeUpdate() != 1) {
                 System.err.println("Not found user with login " + login + " for ban");
                 return null;
             }
 
             user = getUserByLogin(login);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public User userLogin(String login, String password) {
+        User user = null;
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_BY_LOGIN_PASSWORD);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            if (resultSet.getRow() > 0) {
+                user = new User();
+                user.setUserId(resultSet.getInt("user_id"));
+                user.setPassword(resultSet.getString("password"));
+                user.setRole(resultSet.getInt("role_id"));
+                user.setBanToDate(resultSet.getDate("ban_to"));
+                user.setEmail(resultSet.getString("email"));
+                user.setUserLogin(resultSet.getString("user_login"));
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

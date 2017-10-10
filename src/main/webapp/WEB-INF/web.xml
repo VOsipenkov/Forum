@@ -15,6 +15,10 @@
         <servlet-name>registerView</servlet-name>
         <jsp-file>/RegisterView.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>loginController</servlet-name>
+        <servlet-class>controller.Login</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>testConnection</servlet-name>
@@ -27,6 +31,10 @@
     <servlet-mapping>
         <servlet-name>registerView</servlet-name>
         <url-pattern>/registerView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginController</servlet-name>
+        <url-pattern>/loginController</url-pattern>
     </servlet-mapping>
     
     <listener>
