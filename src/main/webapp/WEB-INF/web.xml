@@ -8,8 +8,12 @@
         <servlet-class>controller.TestConnection</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>register</servlet-name>
+        <servlet-name>registerController</servlet-name>
         <servlet-class>controller.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>registerView</servlet-name>
+        <jsp-file>/RegisterView.jsp</jsp-file>
     </servlet>
     
     <servlet-mapping>
@@ -17,8 +21,12 @@
         <url-pattern>/test</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>register</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>registerController</servlet-name>
+        <url-pattern>/registerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>registerView</servlet-name>
+        <url-pattern>/registerView</url-pattern>
     </servlet-mapping>
     
     <listener>
