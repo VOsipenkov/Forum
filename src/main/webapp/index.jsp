@@ -9,9 +9,14 @@
   .outer {
     text-align: center;
   }
+  .error {
+      color: crimson;
+  }
 </style>
 
-<div class="outer">
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <div class="outer">
 	<form method = "POST" action = "/loginController">
 		<p>Login</p><input type = "text" name = "Login">
 		<p>Password</p><input type = "password" name = "Password">
@@ -19,5 +24,13 @@
 		<br>
 		<input type = "submit" value = "Log in">
 </div>
+ <br>
+ <br>
+ <c:if test="${requestScope.errorMessage != null}">
+     <div class="error">
+     ${requestScope.errorMessage}
+     </div>
+ </c:if>
+
 	</body>
 </html>

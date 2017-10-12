@@ -2,7 +2,6 @@ package controller;
 
 import model.User;
 import utils.DBWorker;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +19,12 @@ public class Login extends HttpServlet {
         User user = dbWorker.userLogin(login, password);
         if (user == null) {
             System.out.println("NO AUTHORIZED");
-            //todo return to login and error message
+            req.setAttribute("errorMessage", "There is no such pair login\\password");
+            req.getRequestDispatcher("/loginView").forward(req, resp);
         } else {
             System.out.println("SUCCESS AUTHORIZED");
-            getServletContext().setAttribute("user", user);
+            req.setAttribute("user", user);
+            req.getServletContext().setAttribute("errorMessage", null);
             //todo go to other pages
         }
     }
