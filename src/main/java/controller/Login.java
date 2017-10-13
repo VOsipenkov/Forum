@@ -23,9 +23,10 @@ public class Login extends HttpServlet {
             req.getRequestDispatcher("/loginView").forward(req, resp);
         } else {
             System.out.println("SUCCESS AUTHORIZED");
-            req.setAttribute("user", user);
+            req.getSession().setAttribute("user", user);
             req.getServletContext().setAttribute("errorMessage", null);
-            //todo go to other pages
+
+            req.getRequestDispatcher("/listThemes").forward(req, resp);
         }
     }
 }

@@ -1,5 +1,7 @@
 package utils;
 
+import model.Message;
+import model.Room;
 import model.User;
 
 import java.sql.*;
@@ -156,5 +158,46 @@ public class DBWorkerImpl implements DBWorker {
         }
 
         return user;
+    }
+
+    public List<Room> getAllThemes() {
+        List<Room> rooms = new LinkedList<Room>();
+
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_ALL_THEME_NAMES);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Room room = new Room();
+                room.setRoom_id(resultSet.getInt("room_id"));
+                resultSet.getString("name");
+                rooms.add(room);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rooms;
+    }
+
+    public List<Message> getAllMessagesByTheme(String theme) {
+        List<Message> messages = new LinkedList();
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_ALL_MESSAGES_FOR_THEME);
+            preparedStatement.setString(1, theme);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while(resultSet.next()){
+                Message message = new Message();
+                message.setMessage_id(resultSet.getInt("message_id"));
+                message.setRoom_id(resultSet.getInt("room_id"));
+                message.setUser_id(resultSet.getInt("user_id"));
+                message.setMessage(resultSet.getString("message"));
+
+                messages.add(message);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return messages;
     }
 }

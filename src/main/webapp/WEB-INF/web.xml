@@ -23,6 +23,14 @@
         <servlet-name>loginView</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>listThemes</servlet-name>
+        <servlet-class>controller.ListThemes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>listMessagesInThemeController</servlet-name>
+        <servlet-class>controller.ListMessagesInTheme</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>testConnection</servlet-name>
@@ -43,6 +51,14 @@
     <servlet-mapping>
         <servlet-name>loginView</servlet-name>
         <url-pattern>/loginView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listThemes</servlet-name>
+        <url-pattern>/listThemes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listMessagesInThemeController</servlet-name>
+        <url-pattern>/listMessagesInThemeController</url-pattern>
     </servlet-mapping>
     
     <listener>

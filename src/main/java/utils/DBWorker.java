@@ -1,5 +1,7 @@
 package utils;
 
+import model.Message;
+import model.Room;
 import model.User;
 
 import java.sql.Connection;
@@ -20,4 +22,8 @@ public interface DBWorker {
     public User banUserByLogin(String login);
 
     public User userLogin(String login, String password);
+
+    public List<Room> getAllThemes();
+
+    public List<Message> getAllMessagesByTheme(String theme);
 }
