@@ -3,12 +3,14 @@ package controller;
 import model.User;
 import utils.DBWorker;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+@WebServlet(name="testConnection", urlPatterns = {"/test"})
 public class TestConnection extends HttpServlet {
 
     @Override

@@ -4,7 +4,9 @@ import utils.DBWorker;
 import utils.DBWorkerImpl;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
+@WebListener
 public class DbConnectionListener implements ServletContextListener {
     private DBWorker dbWorker;
 

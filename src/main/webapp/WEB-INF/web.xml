@@ -3,67 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <servlet>
-        <servlet-name>testConnection</servlet-name>
-        <servlet-class>controller.TestConnection</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>registerController</servlet-name>
-        <servlet-class>controller.Register</servlet-class>
-    </servlet>
+
     <servlet>
         <servlet-name>registerView</servlet-name>
         <jsp-file>/RegisterView.jsp</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>loginController</servlet-name>
-        <servlet-class>controller.Login</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>loginView</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
-    <servlet>
-        <servlet-name>listThemes</servlet-name>
-        <servlet-class>controller.ListThemes</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>listMessagesInThemeController</servlet-name>
-        <servlet-class>controller.ListMessagesInTheme</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>testConnection</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>registerController</servlet-name>
-        <url-pattern>/registerController</url-pattern>
-    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>registerView</servlet-name>
         <url-pattern>/registerView</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginController</servlet-name>
-        <url-pattern>/loginController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>loginView</servlet-name>
         <url-pattern>/loginView</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>listThemes</servlet-name>
-        <url-pattern>/listThemes</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>listMessagesInThemeController</servlet-name>
-        <url-pattern>/listMessagesInThemeController</url-pattern>
-    </servlet-mapping>
-    
-    <listener>
-        <listener-class>listeners.DbConnectionListener</listener-class>
-    </listener>
 
     <context-param>
         <param-name>db_username</param-name>
