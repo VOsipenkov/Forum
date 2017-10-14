@@ -169,7 +169,7 @@ public class DBWorkerImpl implements DBWorker {
             while (resultSet.next()) {
                 Room room = new Room();
                 room.setRoom_id(resultSet.getInt("room_id"));
-                resultSet.getString("name");
+                room.setName(resultSet.getString("name"));
                 rooms.add(room);
             }
         } catch (SQLException e) {

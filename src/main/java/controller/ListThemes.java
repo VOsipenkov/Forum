@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ListThemes extends HttpServlet{
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
         List<Room> roomList = dbWorker.getAllThemes();
         req.setAttribute("themes", roomList);
