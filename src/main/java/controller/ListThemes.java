@@ -2,7 +2,6 @@ package controller;
 
 import model.Room;
 import utils.DBWorker;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +18,6 @@ public class ListThemes extends HttpServlet{
         List<Room> roomList = dbWorker.getAllThemes();
         req.setAttribute("themes", roomList);
 
-        /// /todo go to view wich forward to listMessagesInThemeController added name of room in session scope
+        req.getRequestDispatcher("/listThemesView").forward(req, resp);
     }
 }

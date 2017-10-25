@@ -12,7 +12,19 @@
         <servlet-name>loginView</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>listThemesView</servlet-name>
+        <jsp-file>/Themes.jsp</jsp-file>
+    </servlet>
+    <servlet>
+        <servlet-name>MessagesListView</servlet-name>
+        <jsp-file>/MessagesListView.jsp</jsp-file>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>MessagesListView</servlet-name>
+        <url-pattern>/messagesListView</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>registerView</servlet-name>
         <url-pattern>/registerView</url-pattern>
@@ -20,6 +32,10 @@
     <servlet-mapping>
         <servlet-name>loginView</servlet-name>
         <url-pattern>/loginView</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listThemesView</servlet-name>
+        <url-pattern>/listThemesView</url-pattern>
     </servlet-mapping>
 
     <context-param>

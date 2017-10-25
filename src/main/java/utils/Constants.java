@@ -14,11 +14,13 @@ public class Constants {
     public static final String GET_ALL_THEME_NAMES =
             "SELECT * FROM rooms";
     public static final String ADD_MESSAGE =
-            "INSERT INTO messages (room_id, user_id, message) VALUES (?, ?, ?)";
+            "INSERT INTO messages (user_id, room_id, message) VALUES (?, ?, ?)";
     public static final String ADD_THEME =
             "INSERT INTO rooms (name) VALUES (?)";
     public static final String REMOVE_MESSAGE =
             "DELETE FROM messages WHERE message_id = ?";
     public static final String REMOVE_THEME =
             "DELETE FROM rooms WHERE room_id = ?";
+
+    public static final String GET_THEME_ID_BY_NAME = "SELECT room_id FROM rooms WHERE name = ?";
 }

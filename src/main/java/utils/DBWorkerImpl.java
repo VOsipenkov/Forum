@@ -200,4 +200,25 @@ public class DBWorkerImpl implements DBWorker {
         }
         return messages;
     }
+
+    public void addMessageUnderTheme(User user, String theme, String message){
+        try{
+            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_THEME_ID_BY_NAME);
+            preparedStatement.setString(1, theme);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            resultSet.next();
+            int room_id = resultSet.getInt("room_id");
+
+            if (room_id == 0) return;
+
+            preparedStatement = getConnection().prepareStatement(Constants.ADD_MESSAGE);
+            preparedStatement.setInt(1, user.getUserId());
+            preparedStatement.setInt(2, room_id);
+            preparedStatement.setString(3, message);
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 }

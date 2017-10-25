@@ -26,4 +26,6 @@ public interface DBWorker {
     public List<Room> getAllThemes();
 
     public List<Message> getAllMessagesByTheme(String theme);
+
+    public void addMessageUnderTheme(User user, String theme, String message);
 }
