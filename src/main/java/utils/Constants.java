@@ -23,4 +23,5 @@ public class Constants {
             "DELETE FROM rooms WHERE room_id = ?";
 
     public static final String GET_THEME_ID_BY_NAME = "SELECT room_id FROM rooms WHERE name = ?";
+    public static final String GET_USERNAME_BY_ID = "SELECT user_login FROM users WHERE user_id = ?";
 }

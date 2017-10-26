@@ -20,12 +20,12 @@
 <div>
    <c:forEach var="mess" items="${messages}">
 	   ---------------------------------<br>
-	   ${mess.user_id} : ${mess.message}<br>
+	   ${mess.userName} : ${mess.message}<br>
 	   ---------------------------------<br>
    </c:forEach>
 </div><br><br>
 
-	<div>
+	<div align = "center">
 		<form action = "/addMessage" method="post">
 				<textarea rows="20" cols="40" name="message">
 				</textarea>

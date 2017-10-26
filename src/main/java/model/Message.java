@@ -4,7 +4,16 @@ public class Message {
     private int message_id;
     private int room_id;
     private int user_id;
+    private String userName;
     private String message;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public int getMessage_id() {
         return message_id;

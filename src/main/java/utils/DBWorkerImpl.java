@@ -186,7 +186,7 @@ public class DBWorkerImpl implements DBWorker {
             preparedStatement.setString(1, theme);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Message message = new Message();
                 message.setMessage_id(resultSet.getInt("message_id"));
                 message.setRoom_id(resultSet.getInt("room_id"));
@@ -198,11 +198,25 @@ public class DBWorkerImpl implements DBWorker {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        try {
+            for (Message messageItem : messages) {
+                int id = messageItem.getUser_id();
+                PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_USERNAME_BY_ID);
+                preparedStatement.setInt(1, id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                messageItem.setUserName(resultSet.getString("user_login"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return messages;
     }
 
-    public void addMessageUnderTheme(User user, String theme, String message){
-        try{
+    public void addMessageUnderTheme(User user, String theme, String message) {
+        try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_THEME_ID_BY_NAME);
             preparedStatement.setString(1, theme);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -217,7 +231,7 @@ public class DBWorkerImpl implements DBWorker {
             preparedStatement.setInt(2, room_id);
             preparedStatement.setString(3, message);
             preparedStatement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

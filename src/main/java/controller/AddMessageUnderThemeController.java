@@ -1,10 +1,8 @@
 package controller;
 
-
 import model.Message;
 import model.User;
 import utils.DBWorker;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
