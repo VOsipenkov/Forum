@@ -5,6 +5,8 @@
 <body>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8"%>
+
+<c:import url="LogoutHeader.jsp"/>
 <c:forEach var="item" items="${requestScope.themes}">
 	<div>
 		<form method="get" action="/listMessagesInThemeController">
