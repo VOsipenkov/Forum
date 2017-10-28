@@ -13,7 +13,7 @@
 			${item.name}<br>
 			<button type="submit" name="theme" value="${item.name}">
 				<img
-						src="https://mdn.mozillademos.org/files/2917/fxlogo.png"
+						src="/images/fxlogo.png"
 						width="50"
 						alt="SomeAlternateText"
 				>
@@ -21,6 +21,20 @@
 		</form>
 	</div><br>
 </c:forEach>
+<c:if test="${sessionScope.user.role eq 'admin'}">
+	<div>
+		<form method="get" action="/listMessagesInThemeController">
+				${item.name}<br>
+			<button type="submit" name="addTheme">
+				<img
+						src="images/add.png"
+						width="50"
+						alt="SomeAlternateText"
+				>
+			</button>
+		</form>
+	</div><br>
+</c:if>
 </body>
 
 </html>
