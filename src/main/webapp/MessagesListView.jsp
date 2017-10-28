@@ -10,15 +10,10 @@
 	<%@ page pageEncoding="UTF-8"%>
 
 	<c:import url="LogoutHeader.jsp"/>
-	<div>
-		${requestScope.message}
-	</div><br>
-	---------
-	---------
-	<br>
+	<c:import url="Back.jsp"/>
 
 
-<div>
+<div align="center">
    <c:forEach var="mess" items="${messages}">
 	   ---------------------------------<br>
 	   ${mess.userName} : ${mess.message}<br>
