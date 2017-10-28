@@ -8,8 +8,6 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import static utils.Constants.GET_USER_BY_LOGIN;
-
 public class DBWorkerImpl implements DBWorker {
     private String url;
     private String user;
@@ -53,7 +51,7 @@ public class DBWorkerImpl implements DBWorker {
 
     public void addUser(User user) {
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.ADD_USER);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.ADD_USER);
             preparedStatement.setString(1, user.getUserLogin());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
@@ -72,7 +70,7 @@ public class DBWorkerImpl implements DBWorker {
 
         try {
             Statement statement = getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(Constants.GET_ALL_USERS_NAMES);
+            ResultSet resultSet = statement.executeQuery(ConstantsSQL.GET_ALL_USERS_NAMES);
             while (resultSet.next()) {
                 User user = new User();
                 user.setUserId(resultSet.getInt("user_id"));
@@ -94,7 +92,7 @@ public class DBWorkerImpl implements DBWorker {
         User user = null;
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_USER_BY_LOGIN);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -117,7 +115,7 @@ public class DBWorkerImpl implements DBWorker {
         User user = null;
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.BAN_USER_BY_LOGIN);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.BAN_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
 
             if (preparedStatement.executeUpdate() != 1) {
@@ -138,7 +136,7 @@ public class DBWorkerImpl implements DBWorker {
         User user = null;
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_BY_LOGIN_PASSWORD);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_BY_LOGIN_PASSWORD);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
 
@@ -164,7 +162,7 @@ public class DBWorkerImpl implements DBWorker {
         List<Room> rooms = new LinkedList<Room>();
 
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_ALL_THEME_NAMES);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_ALL_THEME_NAMES);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Room room = new Room();
@@ -182,7 +180,7 @@ public class DBWorkerImpl implements DBWorker {
     public List<Message> getAllMessagesByTheme(String theme) {
         List<Message> messages = new LinkedList();
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_ALL_MESSAGES_FOR_THEME);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_ALL_MESSAGES_FOR_THEME);
             preparedStatement.setString(1, theme);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -202,7 +200,7 @@ public class DBWorkerImpl implements DBWorker {
         try {
             for (Message messageItem : messages) {
                 int id = messageItem.getUser_id();
-                PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_USERNAME_BY_ID);
+                PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_USERNAME_BY_ID);
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 resultSet.next();
@@ -217,7 +215,7 @@ public class DBWorkerImpl implements DBWorker {
 
     public void addMessageUnderTheme(User user, String theme, String message) {
         try {
-            PreparedStatement preparedStatement = getConnection().prepareStatement(Constants.GET_THEME_ID_BY_NAME);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.GET_THEME_ID_BY_NAME);
             preparedStatement.setString(1, theme);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -226,10 +224,20 @@ public class DBWorkerImpl implements DBWorker {
 
             if (room_id == 0) return;
 
-            preparedStatement = getConnection().prepareStatement(Constants.ADD_MESSAGE);
+            preparedStatement = getConnection().prepareStatement(ConstantsSQL.ADD_MESSAGE);
             preparedStatement.setInt(1, user.getUserId());
             preparedStatement.setInt(2, room_id);
             preparedStatement.setString(3, message);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addTheme(String theme) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(ConstantsSQL.ADD_THEME);
+            preparedStatement.setString(1, theme);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

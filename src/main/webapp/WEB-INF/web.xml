@@ -20,7 +20,15 @@
         <servlet-name>MessagesListView</servlet-name>
         <jsp-file>/MessagesListView.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>addNewThemeInfo</servlet-name>
+        <jsp-file>/AddNewThemeInfo.jsp</jsp-file>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>addNewThemeInfo</servlet-name>
+        <url-pattern>/addNewThemeInfo</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MessagesListView</servlet-name>
         <url-pattern>/messagesListView</url-pattern>

@@ -23,7 +23,7 @@
 </c:forEach>
 <c:if test="${sessionScope.user.role eq 'admin'}">
 	<div>
-		<form method="get" action="/listMessagesInThemeController">
+		<form method="get" action="/addNewThemeInfo">
 				${item.name}<br>
 			<button type="submit" name="addTheme">
 				<img

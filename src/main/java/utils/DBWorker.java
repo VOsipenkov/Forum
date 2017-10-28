@@ -28,4 +28,6 @@ public interface DBWorker {
     public List<Message> getAllMessagesByTheme(String theme);
 
     public void addMessageUnderTheme(User user, String theme, String message);
+
+    public void addTheme(String theme);
 }
