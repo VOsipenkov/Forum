@@ -19,9 +19,8 @@ public class ListMessagesInTheme extends HttpServlet {
 
         String theme = req.getParameter("theme");
         req.getSession().setAttribute("theme", theme);
-        List<Message> messages = dbWorker.getAllMessagesByTheme(theme);
 
-        req.setAttribute("theme", theme);
+        List<Message> messages = dbWorker.getAllMessagesByTheme(theme);
         req.setAttribute("messages", messages);
 
         req.getRequestDispatcher("/messagesListView").forward(req, resp);

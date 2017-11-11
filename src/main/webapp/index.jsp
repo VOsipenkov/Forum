@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Authorization</title>
  </head>
+ <body>
  <style>
   .outer {
     text-align: center;
@@ -23,14 +24,15 @@
 		<br>
 		<br>
 		<input type = "submit" value = "Log in">
+    </form>
 </div>
  <br>
  <br>
  <c:if test="${requestScope.errorMessage != null}">
      <div class="error">
-     ${requestScope.errorMessage}
+         ${requestScope.errorMessage}
      </div>
  </c:if>
 
-	</body>
+ </body>
 </html>

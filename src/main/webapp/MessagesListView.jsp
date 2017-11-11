@@ -15,9 +15,9 @@
 
 <div align="center">
    <c:forEach var="mess" items="${messages}">
-	   ---------------------------------<br>
-	   ${mess.userName} : ${mess.message}<br>
-	   ---------------------------------<br>
+	   <c:out value="${mess.userName}" escapeXml="true"/> :
+	   <c:out value="${mess.message}" escapeXml="true"/>  <br>
+	   <hr><br>
    </c:forEach>
 </div><br><br>
 
