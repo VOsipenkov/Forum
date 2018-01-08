@@ -14,18 +14,20 @@
 	</style>
 </head>
 <body>
+<%@ taglib prefix="mine" uri="Mine" %>
 <div class="right">
 	<form method = "POST" action = "/registerController">
 		<h><b>Sign on</b></h>
 
-		<p>Name</p><input type = "text" name ="Name">
-		<p>Login</p><input type = "text" name = "Login">
-		<p>Email</p><input type = "email" name = "Email">
-		<p>Password</p><input type = "password" name = "Password">
-		<p>Confirm password</p><input type = "password" name = "Confirm password">
+		<p>Name <input type = "text" name ="Name"></p>
+		<p>Login <input type = "text" name = "Login"></p>
+		<p>Email <input type = "email" name = "Email"></p>
+		<p>Password <input type = "password" name = "Password"></p>
+		<p>Confirm password <input type = "password" name = "Confirm password"></p>
 		<br>
 		<br>
 		<input type = "submit" value = "Sign on">
-	</form>
+	</form><hr>
+</div>
 </body>
 </html>

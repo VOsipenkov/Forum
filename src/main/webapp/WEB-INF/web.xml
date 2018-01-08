@@ -24,7 +24,15 @@
         <servlet-name>addNewThemeInfo</servlet-name>
         <jsp-file>/AddNewThemeInfo.jsp</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>TestView</servlet-name>
+        <jsp-file>/TestView.jsp</jsp-file>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>TestView</servlet-name>
+        <url-pattern>/testView</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>addNewThemeInfo</servlet-name>
         <url-pattern>/addNewThemeInfo</url-pattern>
@@ -55,12 +63,12 @@
         <param-value>root</param-value>
     </context-param>
     
-    <error-page>
-        <error-code>404</error-code>
-        <location>/errors/NotFound.jsp</location>
-    </error-page>
-    <error-page>
-        <location>/errors/Oops.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/errors/NotFound.jsp</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<location>/errors/Oops.jsp</location>-->
+    <!--</error-page>-->
     
 </web-app>

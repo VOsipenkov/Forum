@@ -9,7 +9,7 @@
 <c:import url="LogoutHeader.jsp"/>
 <c:forEach var="item" items="${requestScope.themes}">
 	<div>
-		<form method="get" action="/listMessagesInThemeController">
+		<form method="POST" action="/listMessagesInThemeController">
 			${item.name}<br>
 			<button type="submit" name="theme" value="${item.name}">
 				<img
