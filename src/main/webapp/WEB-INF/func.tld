@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        version="2.0">
+
+    <tlib-version>1.2</tlib-version>
+    <short-name>default_alias</short-name>
+    <uri>Mine</uri>
+
+    <tag>
+        <name>formTag</name>
+        <tag-class>handlers.FormTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>method</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>inputItems</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>loginTag</name>
+        <tag-class>handlers.LoginTag</tag-class>
+        <body-content>scriptless</body-content>
+        <attribute>
+            <name>method</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
