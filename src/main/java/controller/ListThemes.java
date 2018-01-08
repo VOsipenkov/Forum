@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static utils.Constants.DB_WORKER;
+
 @WebServlet(name="listThemes", urlPatterns = {"/listThemes"})
 public class ListThemes extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
+        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute(DB_WORKER);
         List<Room> roomList = dbWorker.getAllThemes();
         req.setAttribute("themes", roomList);
 

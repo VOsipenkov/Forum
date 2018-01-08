@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static utils.Constants.DB_WORKER;
+
 @WebServlet(name = "AddMessageUnderThemeController", urlPatterns = "/addMessage")
 public class AddMessageUnderThemeController extends HttpServlet {
     @Override
@@ -19,13 +21,10 @@ public class AddMessageUnderThemeController extends HttpServlet {
         String message = req.getParameter("message");
         String theme = (String)req.getSession().getAttribute("theme");
 
-        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
+        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute(DB_WORKER);
         dbWorker.addMessageUnderTheme(user, theme, message);
 
-        req.getSession().setAttribute("theme", theme);
         List<Message> messages = dbWorker.getAllMessagesByTheme(theme);
-
-        req.setAttribute("theme", theme);
         req.setAttribute("messages", messages);
 
         req.getRequestDispatcher("/messagesListView").forward(req, resp);

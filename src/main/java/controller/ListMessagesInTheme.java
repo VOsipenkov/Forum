@@ -10,12 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static utils.Constants.DB_WORKER;
+
 @WebServlet(name="listMessagesInThemeController", urlPatterns = {"/listMessagesInThemeController"})
 public class ListMessagesInTheme extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute("dbWorker");
+        DBWorker dbWorker = (DBWorker)getServletContext().getAttribute(DB_WORKER);
 
         String theme = req.getParameter("theme");
         req.getSession().setAttribute("theme", theme);

@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
   "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
@@ -12,6 +12,7 @@
   }
   .error {
       color: crimson;
+      text-align: center;
   }
 </style>
 
@@ -28,10 +29,11 @@
 </div>
  <br>
  <br>
- <c:if test="${requestScope.errorMessage != null}">
+ <c:if test="${not empty requestScope.errorMessage}">
      <div class="error">
          ${requestScope.errorMessage}
      </div>
+     <c:set var="errorMessage" scope="request" value="${null}"/>
  </c:if>
 
  </body>
