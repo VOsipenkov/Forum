@@ -5,53 +5,75 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>registerView</servlet-name>
-        <jsp-file>/RegisterView.jsp</jsp-file>
-    </servlet>
-    <servlet>
         <servlet-name>loginView</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
-    <servlet>
-        <servlet-name>listThemesView</servlet-name>
-        <jsp-file>/Themes.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>MessagesListView</servlet-name>
-        <jsp-file>/MessagesListView.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>addNewThemeInfo</servlet-name>
-        <jsp-file>/AddNewThemeInfo.jsp</jsp-file>
-    </servlet>
-    <servlet>
-        <servlet-name>TestView</servlet-name>
-        <jsp-file>/TestView.jsp</jsp-file>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TestView</servlet-name>
-        <url-pattern>/testView</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>addNewThemeInfo</servlet-name>
-        <url-pattern>/addNewThemeInfo</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>MessagesListView</servlet-name>
-        <url-pattern>/messagesListView</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>registerView</servlet-name>
-        <url-pattern>/registerView</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loginView</servlet-name>
         <url-pattern>/loginView</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registerView</servlet-name>
+        <jsp-file>/RegisterView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registerView</servlet-name>
+        <url-pattern>/registerView</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>listThemesView</servlet-name>
+        <jsp-file>/Themes.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>listThemesView</servlet-name>
-        <url-pattern>/listThemesView</url-pattern>
+        <url-pattern>/themes/listView</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MessagesListView</servlet-name>
+        <jsp-file>/MessagesListView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MessagesListView</servlet-name>
+        <url-pattern>/messages/listView</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>addNewThemeInfo</servlet-name>
+        <jsp-file>/AddNewThemeInfo.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addNewThemeInfo</servlet-name>
+        <url-pattern>/themes/createView</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TestView</servlet-name>
+        <jsp-file>/TestView.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestView</servlet-name>
+        <url-pattern>/testView</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>LogoutView</servlet-name>
+        <jsp-file>/LogoutHeader.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutView</servlet-name>
+        <url-pattern>/logoutView</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Back</servlet-name>
+        <jsp-file>/Back.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Back</servlet-name>
+        <url-pattern>/back</url-pattern>
     </servlet-mapping>
 
     <context-param>

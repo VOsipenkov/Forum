@@ -2,6 +2,7 @@ package controller;
 
 import model.Message;
 import utils.DBWorker;
+import utils.UrlConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static utils.Constants.DB_WORKER;
 
-@WebServlet(name = "listMessagesInThemeController", urlPatterns = {"/listMessagesInThemeController"})
+@WebServlet(name = "listMessagesInThemeController", urlPatterns = {"/messages/list"})
 public class ListMessagesInTheme extends HttpServlet {
 
     @Override
@@ -29,6 +30,6 @@ public class ListMessagesInTheme extends HttpServlet {
         List<Message> messages = dbWorker.getAllMessagesByTheme(theme);
         req.setAttribute("messages", messages);
 
-        req.getRequestDispatcher("/messagesListView").forward(req, resp);
+        req.getRequestDispatcher(UrlConstants.MESSAGES_LIST_VIEW_URL).forward(req, resp);
     }
 }

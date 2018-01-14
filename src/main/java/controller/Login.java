@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static utils.Constants.DB_WORKER;
+import static utils.UrlConstants.LOGIN_VIEW_URL;
+import static utils.UrlConstants.THEMES_LIST_CONTROLLER_URL;
 
-@WebServlet(name = "loginController", urlPatterns = {"/loginController"})
+@WebServlet(name = "loginController", urlPatterns = {"/login"})
 public class Login extends HttpServlet {
 
     @Override
@@ -27,11 +29,11 @@ public class Login extends HttpServlet {
         if (user == null) {
             System.out.println("NO AUTHORIZED");
             req.setAttribute("errorMessage", "There is no such pair login\\password");
-            req.getRequestDispatcher("/loginView").forward(req, resp);
+            req.getRequestDispatcher(LOGIN_VIEW_URL).forward(req, resp);
         } else {
             System.out.println("SUCCESS AUTHORIZED");
             req.getSession().setAttribute("user", user);
-            req.getRequestDispatcher("/listThemes").forward(req, resp);
+            req.getRequestDispatcher(THEMES_LIST_CONTROLLER_URL).forward(req, resp);
         }
     }
 }

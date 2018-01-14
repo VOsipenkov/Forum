@@ -1,3 +1,3 @@
 <div align="left">
-    <a href="/listThemes">back</a>
+    <a href="/themes/list">back</a>
 </div>

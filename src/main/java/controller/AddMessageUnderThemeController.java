@@ -5,6 +5,7 @@ import model.User;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import utils.DBWorker;
+import utils.UrlConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +17,7 @@ import java.util.List;
 
 import static utils.Constants.DB_WORKER;
 
-@WebServlet(name = "AddMessageUnderThemeController", urlPatterns = "/addMessage")
+@WebServlet(name = "AddMessageUnderThemeController", urlPatterns = "/messages/create")
 public class AddMessageUnderThemeController extends HttpServlet {
     String lastMessage;
     String lastSessionId;
@@ -36,7 +37,7 @@ public class AddMessageUnderThemeController extends HttpServlet {
             req.setAttribute("messages", messages);
         }
 
-        req.getRequestDispatcher("/listMessagesInThemeController").forward(req, resp);
+        req.getRequestDispatcher(UrlConstants.MESSAGES_LIST_CONTROLLER_URL).forward(req, resp);
     }
 
     private boolean isNotDDOS(HttpServletRequest req) {

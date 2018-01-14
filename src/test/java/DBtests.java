@@ -1,4 +1,3 @@
-
 import model.Message;
 import org.junit.After;
 import org.junit.Assert;

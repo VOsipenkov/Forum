@@ -9,8 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 
-<c:import url="LogoutHeader.jsp"/>
-<c:import url="Back.jsp"/>
+<%--<c:import url="/logout"/>--%>
+<%--<c:import url="/back"/>--%>
 
 <div align="center">
     <c:forEach var="mess" items="${requestScope.messages}">
@@ -23,7 +23,7 @@
 <br><br>
 
 <div align="center">
-    <form action="/addMessage" method="post">
+    <form action="/messages/create" method="post">
 				<textarea rows="20" cols="40" name="message">
 				</textarea>
         <br>

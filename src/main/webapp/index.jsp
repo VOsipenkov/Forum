@@ -21,7 +21,7 @@
 <%@ taglib prefix="mine" uri="Mine" %>
 
     <div class="login">
-        <mine:loginTag method="POST" url="/loginController"/>
+        <mine:loginTag method="POST" url="/login"/>
     </div>
 <br>
 <br>
