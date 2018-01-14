@@ -14,7 +14,7 @@ import java.util.List;
 
 import static utils.Constants.DB_WORKER;
 
-@WebServlet(name="listThemes", urlPatterns = {"/themes/list"})
+@WebServlet(name="listThemes", urlPatterns = {"/themes/list"}, loadOnStartup = 2)
 public class ListThemes extends HttpServlet{
 
     @Override

@@ -9,8 +9,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" %>
 
-<%--<c:import url="/logout"/>--%>
-<%--<c:import url="/back"/>--%>
+<c:import url="/logoutHeader.jsp"/>
+<c:import url="/themes/backToThemeList.jsp"/>
 
 <div align="center">
     <c:forEach var="mess" items="${requestScope.messages}">

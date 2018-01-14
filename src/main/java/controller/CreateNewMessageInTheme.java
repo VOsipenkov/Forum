@@ -5,7 +5,6 @@ import model.User;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import utils.DBWorker;
-import utils.UrlConstants;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,9 +15,10 @@ import java.io.IOException;
 import java.util.List;
 
 import static utils.Constants.DB_WORKER;
+import static utils.UrlConstants.MESSAGES_LIST_CONTROLLER_URL;
 
-@WebServlet(name = "AddMessageUnderThemeController", urlPatterns = "/messages/create")
-public class AddMessageUnderThemeController extends HttpServlet {
+@WebServlet(name = "createNewMessageInTheme", urlPatterns = "/messages/create", loadOnStartup = 2)
+public class CreateNewMessageInTheme extends HttpServlet {
     String lastMessage;
     String lastSessionId;
     User lastUser;
@@ -29,6 +29,10 @@ public class AddMessageUnderThemeController extends HttpServlet {
         String message = req.getParameter("message");
         String theme = (String) req.getSession().getAttribute("theme");
 
+        if ( StringUtils.isEmpty(message.replaceAll("[\t, \n]", ""))){
+            req.getRequestDispatcher(MESSAGES_LIST_CONTROLLER_URL).forward(req, resp);
+        }
+
         if (isNotDDOS(req)) {
             DBWorker dbWorker = (DBWorker) getServletContext().getAttribute(DB_WORKER);
             dbWorker.addMessageUnderTheme(user, theme, message);
@@ -37,7 +41,7 @@ public class AddMessageUnderThemeController extends HttpServlet {
             req.setAttribute("messages", messages);
         }
 
-        req.getRequestDispatcher(UrlConstants.MESSAGES_LIST_CONTROLLER_URL).forward(req, resp);
+        req.getRequestDispatcher(MESSAGES_LIST_CONTROLLER_URL).forward(req, resp);
     }
 
     private boolean isNotDDOS(HttpServletRequest req) {

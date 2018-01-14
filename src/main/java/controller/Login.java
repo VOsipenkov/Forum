@@ -14,7 +14,7 @@ import static utils.Constants.DB_WORKER;
 import static utils.UrlConstants.LOGIN_VIEW_URL;
 import static utils.UrlConstants.THEMES_LIST_CONTROLLER_URL;
 
-@WebServlet(name = "loginController", urlPatterns = {"/login"})
+@WebServlet(name = "loginController", urlPatterns = {"/login"}, loadOnStartup = 2)
 public class Login extends HttpServlet {
 
     @Override

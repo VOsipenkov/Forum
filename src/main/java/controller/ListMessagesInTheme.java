@@ -14,7 +14,7 @@ import java.util.List;
 
 import static utils.Constants.DB_WORKER;
 
-@WebServlet(name = "listMessagesInThemeController", urlPatterns = {"/messages/list"})
+@WebServlet(name = "listMessagesInThemeController", urlPatterns = {"/messages/list"}, loadOnStartup = 2)
 public class ListMessagesInTheme extends HttpServlet {
 
     @Override

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "addNewTheme", urlPatterns = "/themes/create")
-public class AddNewThemeController extends HttpServlet {
+@WebServlet(name = "createNewTheme", urlPatterns = "/themes/create")
+public class CreateNewTheme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DBWorker dbWorker = (DBWorker) req.getServletContext().getAttribute(Constants.DB_WORKER);

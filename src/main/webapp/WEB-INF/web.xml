@@ -7,6 +7,7 @@
     <servlet>
         <servlet-name>loginView</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
+        <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginView</servlet-name>
@@ -15,7 +16,7 @@
 
     <servlet>
         <servlet-name>registerView</servlet-name>
-        <jsp-file>/RegisterView.jsp</jsp-file>
+        <jsp-file>/registerView.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>registerView</servlet-name>
@@ -24,7 +25,8 @@
 
     <servlet>
         <servlet-name>listThemesView</servlet-name>
-        <jsp-file>/Themes.jsp</jsp-file>
+        <jsp-file>/themes/themeListView.jsp</jsp-file>
+        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>listThemesView</servlet-name>
@@ -33,7 +35,8 @@
 
     <servlet>
         <servlet-name>MessagesListView</servlet-name>
-        <jsp-file>/MessagesListView.jsp</jsp-file>
+        <jsp-file>/messages/messagesListView.jsp</jsp-file>
+        <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>MessagesListView</servlet-name>
@@ -41,41 +44,24 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>addNewThemeInfo</servlet-name>
-        <jsp-file>/AddNewThemeInfo.jsp</jsp-file>
+        <servlet-name>createNewTheme</servlet-name>
+        <jsp-file>/themes/createNewTheme.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>addNewThemeInfo</servlet-name>
+        <servlet-name>createNewTheme</servlet-name>
         <url-pattern>/themes/createView</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>TestView</servlet-name>
-        <jsp-file>/TestView.jsp</jsp-file>
+        <jsp-file>/testView.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestView</servlet-name>
         <url-pattern>/testView</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>LogoutView</servlet-name>
-        <jsp-file>/LogoutHeader.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogoutView</servlet-name>
-        <url-pattern>/logoutView</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>Back</servlet-name>
-        <jsp-file>/Back.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Back</servlet-name>
-        <url-pattern>/back</url-pattern>
-    </servlet-mapping>
-
+    <!--DATABASE LOGIN\PASSWORD-->
     <context-param>
         <param-name>db_username</param-name>
         <param-value>root</param-value>
@@ -85,6 +71,11 @@
         <param-value>root</param-value>
     </context-param>
     
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--FOR PRODUCTION-->
     <!--<error-page>-->
         <!--<error-code>404</error-code>-->
         <!--<location>/errors/NotFound.jsp</location>-->
